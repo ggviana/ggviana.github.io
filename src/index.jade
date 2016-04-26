@@ -1,0 +1,33 @@
+html
+  head
+    title Portifolio
+    meta(charset='UTF-8')
+    link(rel='stylesheet' href='style.css')
+  body
+    nav
+      a.move-to(href='#about') About
+      a.move-to(href='#projects') Projects
+      a.move-to(href='#contact') Contact
+    main
+      section#about
+        div.type-area
+          p.typed > Hi there!
+          p.typed > My name is Guilherme Viana
+          p.typed > I'm a web developer
+          p.typed > Want to #[a.regex.move-to(href='#contact') /contr?act/] me?
+      section#projects
+        ul.project-list
+          each project in projects
+            li.project-item 
+              a.project-url(href=project.url target='_blank' rel='noopener')
+                h2.project-name= project.name
+                h3.project-description= project.description
+                img.project-image(src=project.image)
+      section#contact
+        div.icons
+          a.icon.github(href='https://github.com/ggviana')
+          a.icon.linkedin(href='https://linkedin.com/in/ggviana')
+          a.icon.email(href='mailto:ggviana@hotmail.com.br')
+          a.icon.skype(href='skype:gguimaraes_?chat')
+    script(src='app.js')
+        
