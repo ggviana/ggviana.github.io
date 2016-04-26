@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Angular e-commerce",
+    "url": "https://github.com/ggviana/angular-e-commerce-app",
+    "image": "http://lorempizza.com/380/240",
+    "description": "Store example using AngularJS and Material CSS"
+  },
+  {
+    "name": "Arsenic",
+    "url": "https://github.com/ggviana/arsenic",
+    "image": "http://lorempizza.com/380/240",
+    "description": "Create quick chat rooms. Share with everyone!"
+  },
+  {
+    "name": "Reduce it",
+    "url": "https://github.com/ggviana/reduce-it",
+    "image": "http://lorempizza.com/380/240",
+    "description": "There are several things we can do with Array.prototype.reduce"
+  },
+  {
+    "name": "CFREST Example",
+    "url": "https://github.com/ggviana/ng-coldfusion-example",
+    "image": "http://lorempizza.com/380/240",
+    "description": "A quick example on how to use Coldfusion REST APIs"
+  },
+  {
+    "name": "CFTrait",
+    "url": "https://github.com/ggviana/cftrait",
+    "image": "http://lorempizza.com/380/240",
+    "description": "A simple aproach to implement traits to Coldfusion components"
+  }
+]
