@@ -5,7 +5,7 @@
 
   const sections = queryAll('section')
     .map(section => ({
-      startPos: Math.round(section.getBoundingClientRect().top + window.scrollY),
+      startPos: Math.round(section.getBoundingClientRect().top + window.scrollY) - 1,
       fragment: section.id
     }))
 
