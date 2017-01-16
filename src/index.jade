@@ -22,7 +22,7 @@ html
               a.project-url(href=project.url target='_blank' rel='noopener')
                 h2.project-name= project.name
                 h3.project-description= project.description
-                unless project.image
+                if project.image
                   img.project-image(src=project.image)
       section#contact
         div.icons
