@@ -2,55 +2,53 @@
   'use strict'
 
   window.dataLayer = window.dataLayer || []
-  function gtag () { dataLayer.push(arguments) }
-  gtag('js', new Date())
 
+  function gtag () { dataLayer.push(arguments) }
+
+  gtag('js', new Date())
   gtag('config', 'UA-163921147-1')
 
-  onEnterViewport('.project-list', { pixelsAround: 200, once: true })
-  updateURLFragmentOnScroll(Array.from(document.querySelectorAll('section')))
+  onEnterViewport(
+  '.project-list',
+  (element, removeEvent) => {
+    removeEvent()
+    element.classList.add('showing')
+  })
 
-  function updateURLFragmentOnScroll (fragments) {
-    const fragmentPositions = fragments.map(fragment => ({
-      startPosition:
-        Math.round(fragment.getBoundingClientRect().top + window.scrollY) - 1,
-      fragment: fragment.id
-    }))
-
-    const getShowingFragment = () =>
-      fragmentPositions.reduce(
-        (fragment, fragmentPosition) =>
-          window.scrollY >= fragmentPosition.startPos ? fragmentPosition.fragment : fragment,
-        fragmentPositions[0].fragment
-      )
-
-    const handler = () =>
-      window.history.pushState(null, null, `#${getShowingFragment()}`)
-
-    handler()
-    window.addEventListener('scroll', handler)
-    return () => window.removeEventListener('scroll', handler)
-  }
-
-  function onEnterViewport (element, { pixelsAround = 0, toggleClassName = 'showing', once = false }) {
-    const showingContainer = document.querySelector(element)
-    const rectangle = showingContainer.getBoundingClientRect()
-
-    const isWithinLimits = height =>
-      rectangle.top - pixelsAround >= height ||
-      rectangle.bottom + pixelsAround <= height
-
-    const handler = () => {
-      if (isWithinLimits(window.scrollY)) {
-        showingContainer.classList.toggle(toggleClassName)
-        if (once) {
-          window.removeEventListener('scroll', handler)
-        }
+  onEnterViewport(
+    'section',
+    element => {
+      if (window.location.hash !== element.id) {
+        window.history.pushState(null, null, `#${element.id}`)
       }
+    },
+    {
+      pixelsAround: 200
+    }
+  )
+
+  function onEnterViewport (selector, onEnter = () => {}, {
+    pixelsAround = 0
+  } = {}) {
+    const elements = document.querySelectorAll(selector)
+
+    const isOnViewport = element => {
+      const rectangle = element.getBoundingClientRect()
+      const startPosition = Math.round(rectangle.top + window.scrollY) - pixelsAround
+      const endPosition = Math.round(rectangle.bottom + window.scrollY) - pixelsAround
+      return window.scrollY >= startPosition && window.scrollY <= endPosition
     }
 
-    window.addEventListener('scroll', handler)
+    const removeEvent = () => window.removeEventListener('scroll', handler)
+
+    function handler () {
+      Array.from(elements).filter(isOnViewport).forEach(element => {
+        onEnter(element, removeEvent)
+      })
+    }
+
     handler()
-    return () => window.removeEventListener('scroll', handler)
+    window.addEventListener('scroll', handler)
+    return removeEvent
   }
 })(window, document)
