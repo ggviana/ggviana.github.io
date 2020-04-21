@@ -1,45 +1,56 @@
 (function (window, document) {
   'use strict'
 
-  const $ = selector => Array.from(document.querySelectorAll(selector))
+  window.dataLayer = window.dataLayer || []
+  function gtag () { dataLayer.push(arguments) }
+  gtag('js', new Date())
 
-  const sections = $('section').map(section => ({
-    startPos:
-      Math.round(section.getBoundingClientRect().top + window.scrollY) - 1,
-    fragment: section.id
-  }))
+  gtag('config', 'UA-163921147-1')
 
-  const getCurrentFragment = () =>
-    sections.reduce(
-      (fragment, section) =>
-        window.scrollY >= section.startPos ? section.fragment : fragment,
-      sections[0].fragment
-    )
+  onEnterViewport('.project-list', { pixelsAround: 200, once: true })
+  updateURLFragmentOnScroll(Array.from(document.querySelectorAll('section')))
 
-  ;(function ChangeFragmentOnScroll () {
+  function updateURLFragmentOnScroll (fragments) {
+    const fragmentPositions = fragments.map(fragment => ({
+      startPosition:
+        Math.round(fragment.getBoundingClientRect().top + window.scrollY) - 1,
+      fragment: fragment.id
+    }))
+
+    const getShowingFragment = () =>
+      fragmentPositions.reduce(
+        (fragment, fragmentPosition) =>
+          window.scrollY >= fragmentPosition.startPos ? fragmentPosition.fragment : fragment,
+        fragmentPositions[0].fragment
+      )
+
     const handler = () =>
-      window.history.pushState(null, null, `#${getCurrentFragment()}`)
+      window.history.pushState(null, null, `#${getShowingFragment()}`)
 
-    window.addEventListener('scroll', handler)
     handler()
-  })()
+    window.addEventListener('scroll', handler)
+    return () => window.removeEventListener('scroll', handler)
+  }
 
-  ;(function AnimateProjectList () {
-    const showingContainer = document.querySelector('.project-list')
-    const pixelsAround = 200
+  function onEnterViewport (element, { pixelsAround = 0, toggleClassName = 'showing', once = false }) {
+    const showingContainer = document.querySelector(element)
     const rectangle = showingContainer.getBoundingClientRect()
+
     const isWithinLimits = height =>
       rectangle.top - pixelsAround >= height ||
       rectangle.bottom + pixelsAround <= height
 
     const handler = () => {
       if (isWithinLimits(window.scrollY)) {
-        showingContainer.classList.toggle('showing')
-        window.removeEventListener('scroll', handler)
+        showingContainer.classList.toggle(toggleClassName)
+        if (once) {
+          window.removeEventListener('scroll', handler)
+        }
       }
     }
 
     window.addEventListener('scroll', handler)
     handler()
-  })()
+    return () => window.removeEventListener('scroll', handler)
+  }
 })(window, document)
