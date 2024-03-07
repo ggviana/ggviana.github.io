@@ -2,26 +2,30 @@
   "name": "portifolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "prebuild": "npm run clean && npm run lint",
-    "build": "parcel build src/index.jade -d ./",
+    "prebuild": "npm run clean",
+    "build": "parcel build src/index.html",
     "lint": "standard --fix src",
-    "clean": "rm -fr dist app.*.js styles.*.css index.html",
-    "start": "parcel src/index.jade --open 'google chrome' -d ./"
+    "clean": "rm -fr dist",
+    "start": "parcel src/index.html --open",
+    "prepare": "husky",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.5",
-    "autoprefixer": "9.7.6",
-    "parcel-bundler": "1.12.4",
-    "postcss-modules": "2.0.0",
-    "pug": "2.0.4",
-    "standard": "12.0.1",
-    "stylus": "0.54.7"
+    "@babel/core": "7.24.0",
+    "gh-pages": "6.1.1",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "parcel": "2.12.0",
+    "standard": "17.1.0"
   },
-  "dependencies": {}
+  "lint-staged": {
+    "**/*.js": [
+      "standard --fix"
+    ]
+  }
 }
