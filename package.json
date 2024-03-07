@@ -9,7 +9,7 @@
     "clean": "rm -fr dist",
     "start": "parcel src/index.html --open",
     "prepare": "husky",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist --branch master",
     "predeploy": "npm run build"
   },
   "keywords": [],
