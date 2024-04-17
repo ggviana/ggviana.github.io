@@ -1,7 +1,11 @@
 :root {
-  --color-text-default: #7f8c8d;
-  --color-text-links: #2980b9;
-  --color-background-default: #f7f1e3;
+  --color-black: #141517;
+  --color-gray: #f2f4f7;
+  --color-white: #fff;
+  --color-tint: #0097e6;
+  --color-text-default: var(--color-black);
+  --color-text-links: var(--color-tint);
+  --color-background-default: var(--color-gray);
 }
 
 @font-face {
@@ -28,6 +32,7 @@ html {
 a {
   color: var(--color-text-links);
   text-underline-offset: 6px;
+  padding-right: 4px;
   text-decoration: underline;
   transition: opacity .2s;
 
@@ -76,7 +81,7 @@ header {
 }
 
 main {
-  max-width: 900px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 16px;
 }
@@ -100,7 +105,7 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     height: 100%;
-    margin: 0;
+    margin: 32px 0;
     padding: 0;
     list-style: none;
     display: flex;
@@ -109,6 +114,7 @@ main {
       background-size: var(--icon-size) var(--icon-size);
       height: var(--icon-size);
       width: var(--icon-size);
+      padding: 0;
       display: block;
     }
   }
