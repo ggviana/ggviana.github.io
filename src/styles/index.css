@@ -4,8 +4,18 @@
     --color-background-default: #f7f1e3;
 }
 
+@font-face {
+    font-family: Gilroy-Light;
+    src: url("../fonts/Gilroy-Light.otf");
+}
+
+@font-face {
+    font-family: Gilroy-ExtraBold;
+    src: url("../fonts/Gilroy-ExtraBold.otf");
+}
+
 html {
-    font-family: "Open Sans", sans-serif;
+    font-family: Gilroy-Light, sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -13,6 +23,16 @@ html {
     color: var(--color-text-default);
     background-color: var(--color-background-default);
     font-size: 16px;
+}
+
+a {
+    color: var(--color-text-links);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    transition: opacity 200ms ease;
+    &:hover {
+        opacity: 0.6;
+    }
 }
 
 header {
@@ -28,6 +48,9 @@ header {
     a:link {
         text-decoration: none;
         color: var(--color-text-default);
+        &:hover {
+            opacity: 1;
+        }
     }
 
     nav {
@@ -38,6 +61,7 @@ header {
 
     .header-index {
         font-size: 1.5rem;
+        font-family: Gilroy-ExtraBold, sans-serif;
     }
 
     .header-link {
@@ -55,13 +79,6 @@ main {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 16px;
-
-    a,
-    a:visited,
-    a:link {
-        text-decoration: none;
-        color: var(--color-text-links);
-    }
 }
 
 #about {
