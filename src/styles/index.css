@@ -1,3 +1,5 @@
+@import "normalize.css";
+
 :root {
     --color-black: #141517;
     --color-gray: #f2f4f7;
