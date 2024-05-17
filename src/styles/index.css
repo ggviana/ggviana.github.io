@@ -12,12 +12,14 @@
 
 @font-face {
     font-family: Gilroy-Light;
-    src: url("../fonts/Gilroy-Light.otf");
+    font-display: swap;
+    src: local('Gilroy-Light'), local('Gilroy'), url("../fonts/Gilroy-Light.otf");
 }
 
 @font-face {
     font-family: Gilroy-ExtraBold;
-    src: url("../fonts/Gilroy-ExtraBold.otf");
+    font-display: swap;
+    src: local('Gilroy-ExtraBold'), local('Gilroy'), url("../fonts/Gilroy-ExtraBold.otf");
 }
 
 html {
