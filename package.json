@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "parcel build src/index.html",
+    "build": "parcel build --no-cache src/index.html",
     "lint": "standard --fix src",
     "clean": "rm -fr dist",
     "start": "parcel src/index.html --open",
