@@ -22,6 +22,10 @@
     src: local('Gilroy-ExtraBold'), local('Gilroy'), url("../fonts/Gilroy-ExtraBold.otf");
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-family: Gilroy-Light, sans-serif;
     font-optical-sizing: auto;
@@ -31,6 +35,10 @@ html {
     color: var(--color-text-default);
     background-color: var(--color-background-default);
     font-size: 16px;
+}
+
+h1 strong {
+    font-family: Gilroy-ExtraBold, sans-serif;
 }
 
 a {
@@ -51,6 +59,9 @@ header {
     backdrop-filter: blur(4px);
     position: sticky;
     top: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 
     a,
     a:visited,
