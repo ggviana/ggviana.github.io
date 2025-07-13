@@ -10,7 +10,7 @@
     "start": "parcel src/index.html --open",
     "prepare": "husky",
     "deploy": "gh-pages -d dist --branch master",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build && echo ggviana.net > dist/CNAME"
   },
   "keywords": [],
   "author": "",
