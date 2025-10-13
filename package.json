@@ -5,12 +5,11 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "parcel build --no-cache src/index.html",
+    "postbuild": "cp src/CNAME dist/CNAME",
     "lint": "standard --fix src",
     "clean": "rm -fr dist",
     "start": "parcel src/index.html --open",
-    "prepare": "husky",
-    "deploy": "gh-pages -d dist --branch master",
-    "predeploy": "npm run build && echo ggviana.net > dist/CNAME"
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +18,6 @@
     "@babel/core": "7.26.0",
     "@parcel/packager-raw-url": "2.13.0",
     "@parcel/transformer-webmanifest": "2.13.0",
-    "gh-pages": "6.2.0",
     "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "parcel": "2.13.0",
