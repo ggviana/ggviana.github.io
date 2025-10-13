@@ -7,7 +7,6 @@
     --color-text-links: var(--color-link);
     --color-background: var(--color-gray);
     --icon-size: 48px;
-    --icon-color: var(--color-text-default);
 }
 
 @media (prefers-color-scheme: dark) {
