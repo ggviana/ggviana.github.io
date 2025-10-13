@@ -7,6 +7,7 @@
     --color-text-links: var(--color-link);
     --color-background: var(--color-gray);
     --icon-size: 48px;
+    --icon-color: var(--color-tint);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,8 +23,17 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: "DM Sans Fallback";
+    src: local("Arial");
+    size-adjust: 97.5%;
+    ascent-override: 105%;
+    descent-override: 35%;
+    line-gap-override: 0%;
+}
+
 html {
-    font-family: "DM Sans", sans-serif;
+    font-family: "DM Sans", "DM Sans Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
@@ -124,6 +134,10 @@ main {
     max-width: 720px;
     margin: 0 auto;
     padding: 0 16px;
+
+    h1 {
+        /*min-height: 14.4rem;*/
+    }
 
     p {
         font-size: 1.125rem;
