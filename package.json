@@ -5,7 +5,6 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "parcel build --no-cache src/index.html",
-    "postbuild": "cp src/CNAME dist/CNAME",
     "lint": "standard --fix src",
     "clean": "rm -fr dist",
     "start": "parcel src/index.html --open",
@@ -17,6 +16,7 @@
   "devDependencies": {
     "@parcel/packager-raw-url": "2.16.0",
     "@parcel/transformer-webmanifest": "2.16.0",
+    "gh-pages": "6.3.0",
     "husky": "9.1.7",
     "lint-staged": "15.2.10",
     "parcel": "2.16.0",
