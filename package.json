@@ -6,7 +6,7 @@
     "prebuild": "npm run clean",
     "build": "NODE_ENV=production parcel build --no-cache src/index.html",
     "lint": "standard --fix src",
-    "clean": "rm -fr dist",
+    "clean": "rm -fr dist .parcel-cache",
     "start": "parcel src/index.html --open",
     "prepare": "husky"
   },
