@@ -1,3 +1,5 @@
+@import 'npm:modern-normalize';
+
 :root {
     --color-black: #191f21;
     --color-gray: #f2f4f7;
@@ -174,6 +176,13 @@ main {
 @media screen and (max-width: 480px) {
     h1 strong {
         white-space: normal;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    h1 strong {
+        animation: none;
+        background-position: 0 50%;
     }
 }
 
