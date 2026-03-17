@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "NODE_ENV=production parcel build --no-cache src/index.html",
+    "build": "NODE_ENV=production parcel build --no-cache --no-source-maps src/index.html",
     "lint": "standard --fix src",
     "clean": "rm -fr dist .parcel-cache",
     "start": "parcel src/index.html --open",
